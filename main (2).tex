@@ -1,0 +1,217 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+
+\title{Relación de Problemas 4: Probabilidad condicionada e independencia de sucesos}
+\author{Salvador Gil Antonio \and Salvador Gil Sergio \and Serantes Rivas Víctor\\\\Estadística Descriptiva e Introducción a la Probabilidad \\ Primer curso del Doble Grado en Ingeniería Informática y Matemáticas}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+    \item En una batalla naval, tres destructores localizan y disparan simultáneamente a un submarino. La probabilidad de que el primer destructor acierte el disparo es 0.6, la de que lo acierte el segundo es 0.3 y la de que lo acierte el tercero es 0.1. ¿Cuál es la probabilidad de que el submarino sea alcanzado por algún disparo?
+
+    Sea $D$ el suceso "El submarino ha sido alcanzado por algún disparo" y $D_i$ el suceso "El submarino ha sido alcanzado por el disparo i", entonces:\\
+    
+    $$P(D) = P(D_1\cup D_2 \cup D_3) =$$ 
+    $$=P(D_1) + P(D_2)+ P(D_3) -P(D_1\cap D_2) - P(D_1\cap D_3) - P(D_2\cap D_3) + P(D_1\cap D_2\cap D_3) =$$
+    $$= P(D_1) + P(D_2)+ P(D_3) - P(D_1)P(D_2|D_1) - P(D_1)P(D_3|D_1) - P(D_2)P(D_3|D_2) +$$
+    $$P(D_1)P(D_2|D_1)P(D_3|D_1\cap D_2)$$\\
+    
+    Ahora, como todos los sucesos son independientes los unos de los otros, entonces $P(D_i|D_j) = P(D_i),$ $\forall i,j$ entonces:\\
+
+    $P(D)= P(D_1) + P(D_2)+ P(D_3) - P(D_1)P(D_2) - P(D_1)P(D_3) - P(D_2)P(D_3) + P(D_1)P(D_2)P(D_3)=0,6+0,3+0,1-0,6*0,3-0,6*0,1-0,3*0,1+0,6*0,3*0,1=0,748$
+
+    \item Un estudiante debe pasar durante el curso 5 pruebas selectivas. La probabilidad de pasar la primera es 1/6. La probabilidad de pasar la i-ésima, habiendo pasado las anteriores es 1/(7 - i). Determinar la probabilidad de que el alumno apruebe el curso.\\
+
+    Sea $P_i$ el suceso "Se ha pasado la prueba i-ésima", entonces:
+    $$P(P_1)=\frac{1}{6} \Rightarrow{} P(Pi|P_{n<i})=\frac{1}{7-i}$$
+    
+    Para calcular la probabilidad de pasar el curso, tenemos que calcular la probabilidad de pasar todas las pruebas:
+    $$P(Pasar)=P(P_1\cap P_2\cap P_3\cap P_4\cap P_5) = $$ $$P(P_1)\cdot P(P_2|P_1)\cdot P(P_3|P_1P_2)\cdot P(P_4|P_1P_2P_3)\cdot P(P_5|P_1P_2P_3P_4)=\frac{1}{6}\cdot \frac{1}{5}\cdot \frac{1}{4}\cdot \frac{1}{3}\cdot \frac{1}{2}=\frac{1}{720}=0,0013$$
+
+    \item En una ciudad, el 40 \% de las personas tienen pelo rubio, el 25 \% tienen ojos azules y el 5 \% el pelo rubio y los ojos azules. Se selecciona una persona al azar. Calcular la probabilidad de los siguientes sucesos:
+    
+    Sean los sucesos:\\
+    $R$= "Tener el pelo rubio"\\
+    $A$= "Tener los ojos azules"\\
+    
+    Con probabilidades:\\
+    $P(R) = 0,4$\\
+    $P(A) = 0,25$\\
+    $P(R\cap A) = 0,05$\\
+
+    \begin{enumerate}[label=\alph*)]
+        \item tener el pelo rubio si se tiene los ojos azules,\\
+
+        Tenemos que calcular $P(R|A)$:
+        $$P(R|A)=\frac{P(R\cap A)}{P(A)}= 0,2$$
+        
+        \item tener los ojos azules si se tiene el pelo rubio,\\
+
+        De la misma manera:
+        $$P(A|R) = \frac{P(A\cap R)}{P(R)} = 0,125$$
+        
+        \item no tener pelo rubio ni ojos azules,\\
+
+        Calculamos el complementario de la unión:
+        $$P(\overline{R\cup A}) = 1- P(R \cup A) = 1- [P(R) + P(A) - P(R\cap A)] = 1-(0,4 + 0,25 - 0,05) = 0,4$$
+        
+        \item tener exactamente una de estas características.\\
+
+        Tenemos que calcular la probabilidad de ser rubio y no tener los ojos azules unión con la probabilidad de tener los ojos azules y no ser rubio:\\
+
+        $P[(R\cap \bar A) \cup (\bar R\cap A)] = P(R\cap \bar A) + P(\bar R \cap A) - P(R\cap \bar A \cap \bar R \cap A) = P(R)-P(R\cap A) + P(A)-P(R\cap A) - 0 = P(R) + P(A) - 2P(R\cap A) = 0,25 + 0,4 - 0,1 = 0,55$
+        
+    \end{enumerate}
+    
+
+    \item En una población de moscas, el 25\% presentan mutación en los ojos, el 50\% presentan mutación en las alas, y el 40\% de las que presentan mutación en los ojos presentan mutación en las alas.
+    
+    \begin{enumerate}
+        \item ¿Cuál es la probabilidad de que una mosca elegida al azar presente al menos una de las mutaciones?\\
+        Sean los sucesos posibles:\\
+        $O$= "Presenta mutación en los ojos", con $P(O)=0.25$\\
+        $A$= "Presenta mutación en las alas", con $P(A)=0.5$\\
+        Y sabiendo que $P(A|O)=0.4$\\
+        Nos piden calcular la probabilidad de la intersección de los sucesos $O$ y $A$:
+        $$P(O\cup A)= P(A)+P(O)-P(O\cap A)= P(A)+P(O)-P(O)\cdot P(A|O)=$$
+        $$=0.5+0.25-0.25\cdot 0.4=0.65$$
+        
+        \item ¿Cuál es la probabilidad de que presente mutación en los ojos pero no en las alas?\\
+
+        Ahora tenemos que calcular:
+        $$P(O\cap \bar A)= P(O-A)= P(O)-P(O\cap A)=0.25-0.1=0.15$$
+    \end{enumerate}
+    
+    \item Una empresa utiliza dos sistemas alternativos, A y B, en la fabricación de un artículo, fabricando por el sistema A el 20\% de su producción. Cuando a un cliente se le ofrece dicho artículo, la probabilidad de que lo compre es \( \frac{2}{3} \) si éste se fabricó por el sistema A y \( \frac{2}{5} \) si se fabricó por el sistema B. Calcular la probabilidad de vender el producto.\\
+
+    Tenemos que calcular la probabilidad del suceso $C$, que corresponde  que el producto sea vendido, que, teniendo en cuenta que $A$ y $B$, siendo los sucesos que corresponden a cada sistema de fabricación, cumplen que $\bar A = B$, sabemos que:
+    $$P(C)=P[C\cap (A\cup B)]=P[ (C\cap A) \cup (C\cap B)]=P(C\cap A) +  P(C\cap B) - P(C\cap A \cap B) = $$
+    Sabiendo que $P(A\cap B)=0$, y aplicando la probabilidad compuesta, equivale a:
+    $$P(C)= P(A)P(C|A)+P(B)P(C|B)= \frac{1}{5} \cdot \frac{2}{3}+\frac{4}{5}\cdot \frac{2}{5}=\frac{2}{15}+\frac{8}{25}=0.4533$$
+    
+    
+    \item Se consideran dos urnas: la primera con 20 bolas, de las cuales 18 son blancas, y la segunda con 10 bolas, de las cuales 9 son blancas. Se extrae una bola de la segunda urna y se deposita en la primera; si a continuación, se extrae una bola de ésta, calcular la probabilidad de que sea blanca.\\
+
+    Vamos a calcular al probabilidad de que la segunda bola sea blanca. En este caso, la segunda extracción depende del resultado de la primera, que se realiza sobre la Urna $U_2$, tal que:
+    $$P(B_1)=\frac{9}{10}$$
+    Por tanto, y teniendo en cuenta que el suceso que buscamos es $B_2$, y considerando los sucesos disjuntos $B_1$ y $\bar B_1$, tenemos que  $B_2= (B_1 \cup \bar B_1)\cap B_2=(B_1\cap B_2) \cup (\bar B_1\cap B_2)$, cuya probabilidad es:
+    $$P((B_1\cap B_2) \cup (\bar B_1\cap B_2))= P(B_1\cap B_2) + P(\bar B_1\cap B_2)= P(B_1)P(B_2|B_1)+P(\bar B_1)P(B_2|\bar B_1)=$$
+    $$= \frac{9}{10} \cdot \frac{19}{21}+\frac{1}{10} \cdot \frac{18}{21}=\frac{171+18}{210}=\frac{9}{10}$$
+    
+    
+    \item Se dispone de tres urnas con la siguiente composición de bolas blancas y negras:
+    
+    \begin{itemize}
+        \item \( U_1 \): 5 blancas y 5 negras
+        \item \( U_2 \): 6 blancas y 4 negras
+        \item \( U_3 \): 7 blancas y 3 negras
+    \end{itemize}
+    
+    Se elige una urna al azar y se sacan cuatro bolas sin reemplazamiento.
+    
+    \begin{enumerate}
+        \item Calcular la probabilidad de que las cuatro sean blancas.\\
+
+        Empezamos calculando la probabilidad de que salgan 4 blancas para cada una de las urnas. Aplicando la regla de Laplace, tenemos que la cantidad de casos posibles serán combinaciones de 4 elementos sobre el total de 10 en cada urna, y los favorables serán combinaciones del número de bolas blancas de cada urna sobre el total:
+        $$P(4B|U_1)=\frac{C^4_5}{C^4_{10}}=\frac{5!\cdot6!}{10!}= \frac{1}{42}$$
+        $$P(4B|U_2)=\frac{C^4_6}{C^4_{10}}=\frac{6!\cdot6!}{10!\cdot2!}= \frac{1}{14}$$
+        $$P(4B|U_3)=\frac{C^4_7}{C^4_{10}}=\frac{7!\cdot6!}{10!\cdot3!}= \frac{1}{6}$$
+        
+        La probabilidad de que salgan 4 bolas blancas será, sabiendo que la probabilidad de que toque cada una de las urnas forman una partición de $\Omega$:
+        $$P(4B)=P[4B \cap (U_1 \cup U_2 \cup U_3)]= P(4B \cap U_1)+P(4B \cap U_2)+P(4B \cap U_2)=$$
+        $$=P(U_1) \cdot P(4B|U_1)+P(U_2) \cdot P(4B|U_2)+P(U_3) \cdot P(4B|U_3)=\frac{1}{3}\cdot[\frac{1}{42}+\frac{1}{14}+\frac{1}{6}]=$$
+        $$=\frac{11}{126}=0.0873$$
+        
+        \item Si en las bolas extraídas sólo hay una negra, ¿cuál es la probabilidad de que la urna elegida haya sido \( U_2 \)?\\
+
+        Calculamos ahora la probabilidad de que salgan 3 blancas y 1 negra para cada una de las urnas:
+    
+        $$P(3B1N|U_1)=\frac{C^3_5 \cdot C^1_5} {C^4_{10}} =\frac{5!\cdot7!}{10!\cdot 2!} \cdot 5= \frac{5}{12}$$
+        
+        $$P(3B1N|U_2)=\frac{C^3_6 \cdot C^1_4} {C^4_{10}} =\frac{6!\cdot7!}{10!\cdot 3!} \cdot 4= \frac{2}{3}$$
+        
+        $$P(3B1N|U_1)=\frac{C^3_5 \cdot C^1_5} {C^4_{10}} =\frac{7!\cdot7!}{10!\cdot 4!}\cdot 3= \frac{7}{8}$$
+
+        Y aplicando la fórmula de Bayes:
+        $$P(U_2|3B1N)=\frac{P(U_2)\cdot P(3B1N|U_2)}{P(U_1)\cdot P(3B1N|U_1)+P(U_2)\cdot P(3B1N|U_2)+P(U_3)\cdot P(3B1N|U_3)}=$$
+        $$=\frac{\frac{1}{3} \cdot \frac{2}{3}}{\frac{1}{3} \cdot [\frac{5}{12}+\frac{2}{3}+\frac{7}{8}]}= \frac{48}{141}=0.3404$$
+        
+    \end{enumerate}
+    
+    \item La probabilidad de que se olvide inyectar el suero a un enfermo durante la ausencia del doctor es \( \frac{2}{3} \). Si se le inyecta el suero, el enfermo tiene igual probabilidad de mejorar que de empeorar, pero si no se le inyecta, la probabilidad de mejorar se reduce a 0.25. Al regreso, el doctor encuentra que el enfermo ha empeorado. ¿Cuál es la probabilidad de que no se le haya inyectado el suero?\\
+
+    Definimos primero los sucesos posibles. Sean:\\
+    $S=$ "Se ha inyectado el suero", con $P(S)=\frac{1}{3}$\\
+    $M= "$El paciente ha mejorado"\\
+    Nos piden calcular la probabilidad de que no se haya inyectado el suero condicionada a que el enfermo ha empeorado, que podemos expresar como:
+    $$P(\bar S|\bar M)=\frac{P(\bar S) \cdot P(\bar M| \bar S)}{P(S) \cdot P(\bar M| S) + P(\bar S) \cdot P(\bar M| \bar S)}=\frac{\frac{2}{3} \cdot \frac{3}{4}}{\frac{1}{3} \cdot \frac{1}{2}+\frac{2}{3} \cdot \frac{3}{4}}=\frac{3}{4}$$
+    
+    \item \( N \) urnas contienen cada una 4 bolas blancas y 6 negras, mientras otra urna contiene 5 blancas y 5 negras. De las \( N + 1 \) urnas se elige una al azar y se extraen dos bolas sucesivamente, sin reemplazamiento, resultando ser ambas negras. Sabiendo que la probabilidad de que queden 5 blancas y 3 negras en la urna elegida es \( \frac{1}{7} \), encontrar \( N \).
+    
+    Sea $U_1$ el suceso de "Haber seleccionado una urna entre las N primeras", y $U_2$ el suceso de "Haber seleccionado la urna N+1":\\
+
+    Comprobamos que es una partición: 
+    $$P(U_1)+P(U_2)=\frac{N}{N+1}+\frac{1}{N+1}=1$$
+    
+    Ahora, Sea $N_i$ el suceso de haber sacado una bola negra en la i-ésima extracción, calculamos las probabilidades de obtener:
+    $$P(N_1N_2|U_1)=\frac{6}{10} \cdot \frac{5}{9}$$
+    $$P(N_1N_2|U_2)=\frac{5}{10} \cdot \frac{4}{9}$$
+    Entonces, aplicamos la regla de Bayes para encontrar la probabilidad de que se haya elegido la urna N+1 (porque si no no podrían quedar 5 bolas blancas) condicionada a la probabilidad de haber elegido dos bolas negras: 
+    
+    $$P(U_2|N_1N_2)=\frac{P(U_2)\cdot P(N_1N_1|U_2)}{P(U_1)\cdot P(N_1N_1|U_1)\cdot P(U_2)\cdot P(N_1N_1|U_2)}=\frac{\frac{1}{N+1}\cdot \frac{2}{9}}{\frac{1}{N} \cdot \frac{3}{9}+\frac{1}{N+1}\cdot\frac{2}{9}}=$$
+    $$=\frac{2}{3N+2}=\frac{1}{7}$$
+    Finalmente, despejamos N de la ecuación, y tenemos que: $3N+2 = 14$ por lo que $N=4$
+    
+    \item Se dispone de 6 cajas, cada una con 12 tornillos; una caja tiene 8 buenos y 4 defectuosos; dos cajas tienen 6 buenos y 6 defectuosos y tres cajas tienen 4 buenos y 8 defectuosos. Se elige al azar una caja y se extraen 3 tornillos con reemplazamiento, de los cuales 2 son buenos y 1 es defectuoso. ¿Cuál es la probabilidad de que la caja elegida contuviera 6 buenos y 6 defectuosos?\\
+    Sean:\\
+    X el suceso de "seleccionar la caja 1"\\
+    Y el suceso de "seleccionar la caja 2"\\
+    Z el suceso de "seleccionar la caja 3"\\
+
+    Primero comprobamos si es una partición de $\Omega$: 
+    $$P(X)+P(Y)+P(Z)=\frac{1}{6}+2\cdot \frac{1}{6}+3\frac{1}{6}=1$$
+
+    Ahora que sabemos que se trata de una partición, podemos utilizar el teorema de la probabilidad total para calcular la probabilidad de escoger dos tornillos buenos y uno defectuoso: 
+    
+    $$P(2B1D)=P(X)\cdot P(2B1D|X)+P(Y)\cdot P(2B1D|Y)+P(Z)\cdot P(2B1D|Z)=$$
+    $$\frac{1}{6}\cdot \frac{VR_8^2\cdot VR_4^1}{VR_{12}^3}+\frac{1}{3}\cdot \frac{VR_6^2\cdot VR_6^1}{VR_{12}^3}+\frac{1}{2}\cdot \frac{VR_4^2\cdot VR_8^1}{VR_{12}^3}=\frac{1}{6\cdot 12^3}(8^2\cdot 4+2\cdot 6^3+3\cdot (4^2\cdot 8)=$$
+    $$=0,1033950617$$
+
+    Ahora que tenemos calculada la probabilidad de coger dos tornillos buenos y uno defectuoso, simplemente calculamos la probabilidad condicionada de seleccionar la caja 2 si se han obtenido los dos tornillos buenos y uno defectuoso: 
+    $$P(Y|2B1D)=\frac{P(Y)\cdot P(2B1D|Y)}{P(2B1D)}=\frac{0,04166}{0,1033950617}=0,4029850747$$
+    
+    
+    \item Se seleccionan \( n \) dados con probabilidad \( p_n = \frac{1}{2^n} \), \( n \in \mathbb{N} \). Si se lanzan estos \( n \) dados y se obtiene una suma de 4 puntos, ¿cuál es la probabilidad de haber seleccionado 4 dados?
+
+    Sea $D_n$ el suceso "Jugar con n dados", primero comprobamos que es una partición:
+    $$\sum\limits_{n\geq 1}^\infty P(D_n) = \frac{\frac{1}{2}}{1-\frac{1}{2}}=1$$
+    
+    Ahora, Sea $S_n$ el suceso "La suma de los n dados es 4", tenemos que buscar la probabilidad de que se haya jugado con 4 dados si la suma de sus resultados es 4, es decir suceso $D_4$ condicionada al suceso $S4$. Antes, no fijamos en que el máximo número de dados con los que se puede jugar para obtener una puntuación de 4 son 4 dados, ya que cada dado tiene como mínimo el resultado 1. Ahora, utilizamos la regla de Bayes para calcular la probabilidad condicionada:\\
+
+    \[P(D_4|S_4)=\frac{P(D_4)\cdot P(S_4|D_4)}{P(D_1)\cdot P(S_4|D_1)+P(D_2)\cdot P(S_4|D_2)+P(D_3)\cdot P(S_4|D_3)+P(D_4)\cdot P(S_4|D_4)}=\]
+    \[=\frac{\frac{1}{2^4}\cdot \frac{1}{6^4}}{\frac{1}{2}\cdot \frac{1}{6}+\frac{1}{2^2}\cdot \frac{3}{6^2}+\frac{1}{2^3}\cdot \frac{3}{6^3}+\frac{1}{2^4}\cdot \frac{1}{6^4}}=4,551661356\cdot 10^{-4}\]
+    
+    \item Se lanza una moneda; si sale cara, se introducen \( k \) bolas blancas en una urna y si sale cruz, se introducen \( 2k \) bolas blancas. Se hace una segunda tirada, poniendo en la urna \( h \) bolas negras si sale cara y \( 2h \) si sale cruz. De la urna así compuesta se toma una bola al azar. ¿Cuál es la probabilidad de que sea negra?
+
+    Sea C el suceso de que salga cara en la moneda n, y Z el suceso de que salga cruz en la moneda n ($n=1,2$):\\
+
+    Para calcular $P(N)$, utilizamos el teorema de la probabilidad total con los cuatro sucesos: $CC, CZ,ZC,ZZ$ (dándonos cuenta de que los sucesos $CZ,ZC$ son distintos). Primero, nos aseguramos de que forman una partición:\\
+    \[(CC)+P(CZ)+P(ZC)+P(ZZ)=4\cdot\frac{1}{4}=1\]
+    Ahora que sabemos que es una partición, podemos utilizar el teorema de la probabilidad total para calcular $P(N)$:
+    \[P(N)=P(CC)\cdot P(N|CC)+P(CZ)\cdot P(N|CZ)+P(ZC)\cdot P(N|ZC)+P(ZZ)\cdot P(N|ZZ) = \]
+    \[\frac{1}{4}\cdot [P(CC)+P(CZ)+P(ZC)+P(ZZ)]=\frac{1}{4}[\frac{h}{k+h}+\frac{2h}{k+2h}+\frac{h}{2k+h}+\frac{2h}{2k+2h}]\]
+    \[=\frac{1}{4}\cdot[\frac{2h}{k+h}+\frac{2h}{k+2h}+\frac{h}{2k+h}]\]
+    
+    \end{enumerate}
+    \end{document}
+    
