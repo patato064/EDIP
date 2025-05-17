@@ -1,0 +1,270 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+
+\title{Relación de Problemas 3.Espacios de probabilidad: definición axiomática y propiedades básicas de la probabilidad}
+\author{Salvador Gil Antonio \and Salvador Gil Sergio \and Serantes Rivas Víctor\\\\Estadística Descriptiva e Introducción a la Probabilidad \\ Primer curso del Doble Grado en Ingeniería Informática y Matemáticas}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+\item Durante un año, las personas de una ciudad utilizan 3 tipos de transportes: metro (M), autobús (A), y coche particular (C). Las probabilidades de que durante el año hayan usado unos u otros transportes son:
+
+    \begin{center}
+    \begin{tabular}{l}
+    M: 0.3; \quad A: 0.2; \quad C: 0.15; \\
+    M y A: 0.1; \quad M y C: 0.05; \quad A y C: 0.06; \\
+    M, A y C: 0.01
+    \end{tabular}
+    \end{center}
+    
+    Calcular las probabilidades siguientes:
+    \begin{enumerate}[label=\alph*)]
+    \item que una persona viaje en metro y no en autobús;
+    \item que una persona tome al menos dos medios de transporte;
+    \item que una persona viaje en metro o en coche, pero no en autobús;
+    \item que viaje en metro, o bien en autobús y en coche;
+    \item que una persona vaya a pie.
+    \end{enumerate} \\
+     }
+    
+    \begin{enumerate}[label=\alph*)]
+        \item que una persona viaje en metro y no en autobús;\\
+    La probabilidad de que una persona viaje en metro y no en autobús es: $P(M\cup\bar A)=P(M)-P(M\cap A)=0,2$
+    
+        \item que una persona tome al menos dos medios de transporte;\\
+    La probabilidad de que una persona tome al menos dos medios de transporte (es decir, la unión de las probabilidades de todas las intersecciones), es:
+    $P($Al menos dos medios de transporte$)=P($dos medios de transporte$)+P($tres medios de transporte$)= [P(M\cup A) + P(M\cup C) + P(A\cup C) - 3P(M\cup C\cup A)] + P(M\cup C \cup A) = 0,18 + 1 = 0,19$
+    
+        \item que una persona viaje en metro o en coche, pero no en autobús;\\
+    La probabilidad de que una persona viaje en metro o en coche, pero no en autobús es: $P((M\cup C)\cap \bar A) = P(M\cap \bar A) + P(C \cap \bar A) - P(M \cap C \cap \bar A) = [P(M) - P(M\cap A)] + [P(C) - P(C\cap A)] + [P(M\cap C) - P (M\cap C \cap A)] = 0,33$
+    
+        \item que viaje en metro, o bien en autobús y en coche;\\
+    La probabilidad de que una persona viaje en metro y no en autobús es: $P(M\cup (A\cap C)) = P(M) + P(A\cap C) - P(M\cap A \cap C) = 0,34$
+    
+        \item que una persona vaya a pie;\\
+    No podemos saber la probabilidad de que una persona vaya a pie, puesto que no conocemos el espacio muestral completo, por lo que no sabemos si existen más medios de transporte con una probabilidad distinta de 0. Bajo la hipótesis de que no existen, entonces sí podríamos calcular la probabilidad de que una persona vaya a pie, que sería el complementario a las probabilidades de las uniones de los demás modos de transporte:
+    $P($Ir a pie$) = P\overline{(M\cup A \cup C)} = 1- [P(M\cup A \cup C) = 1-P(M) +P(A) + P(C) - P(M\cap A) - P(M \cap C) - P(A\cap C) + P(M\cap A \cap C)]= 0,55$
+    
+    \end{enumerate}
+    
+\item Sean \(A, B\) y \(C\) tres sucesos de un espacio probabilístico \((\Omega, \mathcal{A}, P)\), tales que \(P(A) = 0{,}4\), \(P(B) = 0{,}2\), \(P(C) = 0{,}3\), \(P(A \cap B) = 0{,}1\) y \((A \cup B) \cap C = \emptyset\). Calcular las probabilidades de los siguientes sucesos:
+    \begin{enumerate}[label=\alph*)]
+    \item sólo ocurre \(A\),
+    \item ocurren los tres sucesos,
+    \item ocurren \(A\) y \(B\) pero no \(C\),
+    \item por lo menos dos ocurren,
+    \item ocurren dos y no más,
+    \item no ocurren más de dos,
+    \item ocurre por lo menos uno,
+    \item ocurre sólo uno,
+    \item no ocurre ninguno.
+    \end{enumerate}
+    
+    \begin{enumerate}[label=\alph*)]
+    \item sólo ocurre \(A\),\\
+    la probabilidad de que solo ocurra \(A\) es: $$P(A)-P(A\cap B)= 0.4-0.1=0.3$$
+    \item ocurren los tres sucesos,\\
+    Será igual a: $$P(A\cap B\cap C)=P( (A\cap B) \cap (B\cap C))= 0+0=0$$
+    \item ocurren \(A\) y \(B\) pero no \(C\),\\
+    Calculamos $$P((A\cap B)-C)=P( (A\cap \bar C) \cap (B\cap \bar C) )= P(A\cap B)= 0.1$$
+    \item por lo menos dos ocurren,\\
+    Es la probabilidad de que ocurran 2, ya que la probabilidad que ocurran 3 es 0: $$P[( A\cap B ) \cup (A\cap C)\cup (B\cap C)\cup (A\cap B \cap C)]= P(A\cap B) = 0.1$$
+    \item ocurren dos y no más,\\
+    Como es imposible que ocurran los 3 por b), entonces estamos en el moismo caso que en d), cuya probabilidad es $$P(A\cap B)=0.1$$
+    \item no ocurren más de dos,\\
+    Es la probabilidad de que no ocurran los 3 a la vez, que por b) es nula. entonces: $$1-P(A\cap B\cap C) = 1-0 =1$$
+    \item ocurre por lo menos uno,\\
+    Será la probabilidad de que ocurra lo siguiente: $$P(A\cup  B\cup C)=$$
+    $$P(A) +  P(B) + P(C) - P(A\cap B) - P(A\cap C) - P(C\cap B) + P(A\cap B\cap C) =$$
+     $$=0.4 + 0.2 + 0.3 - 0.1 - 0-0+0=0.8$$
+    \item ocurre sólo uno,\\
+    Será la probabilidad de que no ocurran simultáneamente 2 o más, que, como $C$ es incompatible con $A$ y $B$, será la probabilidad de que ocurra C, o que ocurran $A$ y $B$ independientemente: $$P[(A\cap\bar B) \cup (B\cap\bar A) \cup C]= P(A) - P(A\cap B) + P(B) -P (A\cap B) + P(C)=$$ $$= 0.4+0.2+0.3-2*0.1=0.1$$
+    \item no ocurre ninguno.\\
+    Será la probabilidad de que no ocurra, por lo menos uno, es decir, el contrario de g): $$1-P(A\cup B\cup C)= 1-0.8=0.2$$
+    \end{enumerate}
+    
+\item Se sacan dos bolas sucesivamente sin devolución de una urna que contiene 3 bolas rojas distinguibles y 2 blancas distinguibles.
+    \begin{enumerate}[label=\alph*)]
+    \item Describir el espacio de probabilidad asociado a este experimento.\\
+    El espacio definido por el experimento $(\Omega, A,P)$ será el de tomar 2 bolas distinguibles sin repetición, en el que importa el orden. $|\Omega|$ serán variaciones sin repetición de 2 elementos en un conjunto de 5:
+    $$|\Omega|= V^2_5=\frac{5!}{(5-2)!}=20$$
+    además, los sucesos de $\Omega$ se pueden representar como:\\
+    \{$Ri, Ri$\}, \{$Ri, Bi$\}, \{$Bi, Ri$\}, \{$Bi, Bi$\}, con $Bi=$ "Sale la bola blanca $i$", y $Ri=$ "Sale la bola roja $i$", según el orden de salida ($i=1,2,3$).
+    
+    \item Descomponer en sucesos elementales los sucesos: la primera bola es roja, la segunda bola es blanca, y calcular la probabilidad de cada uno de ellos.\\
+    De todos los sucesos posibles, aquellos en los que la primera bola es roja son:\\
+    \{$R1, R2$\}, \{$R1, R3$\}, \{$R2, R1$\}\, {$R2, R3$\}, \{$R3, R1$\}, \{$R3, R2$\}, \{$R1, B1$\}, \{$R1, B2$\}, \{$R2, B1$\}\, {$R2, B2$\}, \{$R3, B1$\}, \{$R3, B2$\}\\
+    Cuya probabilidad es de: $$P(A)=\frac{12}{20} = \frac{3}{5} = 0.6$$
+    De todos los sucesos posibles, aquellos en los que la segunda bola es blanca son:\\
+    \{$R1, B1$\}, \{$R1, B2$\}, \{$R2, B1$\}, \{$R2, B2$\}, \{$R3, B1$\}, \{$R3, B2$\}, \{$B1, B2$\}, \{$B2, B1$\}\\
+    Cuya probabilidad es de: $$P(B)=\frac{8}{20} = \frac{2}{5} = 0.4$$
+    
+    \item ¿Cuál es la probabilidad de que ocurra alguno de los sucesos considerados en el apartado anterior?\\
+    Primero calculamos la probabilidad de la intersección de los sucesos, que será la de que ocurra:\\
+    \{$R1, B1$\}, \{$R1, B2$\}, \{$R2, B1$\}, \{$R2, B2$\}, \{$R3, B1$\}, \{$R3, B2$\}\\
+    Cuya probabilidad es de: $$P(A\cap B)=\frac{6}{20} = \frac{3}{10} = 0.3$$
+    
+    La probabilidad de que ocurra alguno será: $$P(A\cup B)= P(A)+P(B)-P(A\cap B)= 0.6 + 0.4 - 0.3 = 0.7$$
+    
+    \end{enumerate}
+    
+\item Una urna contiene \(a\) bolas blancas y \(b\) bolas negras. ¿Cuál es la probabilidad de que al extraer dos bolas simultáneamente sean de distinto color?\\
+    El total de elementos de la urna será de $a+b$, lo que nos permite calcular las probabilidades individuales de cada suceso:\\
+    El total de casos posibles será de Combinaciones de 2 elementos sin repetición, de entre $a+b$:
+    $$C^2_{a+b}=\frac{(a+b)!}{2!(a+b-2)!}=\frac{(a+b)(a+b-1)}{2}$$
+    $B$= "Sale bola blanca"; $P(B)= \frac{a}{a+b}$\\
+    $N$= "Sale bola negra"; $P(N)= \frac{b}{a+b}$\\
+    Y los casos favorables serán $b$ bolas negras por cada una de las $a$ bolas blancas, es decir, $a*b$.\\
+    Las probabilidades de que salgan bolas de distintos colores serán, entonces:\\
+    $$P(BN)=\frac{ab}{1}\frac{2}{(a+b)(a+b-1)}=\frac{2ab}{(a+b)(a+b-1)}$$
+    
+\item Una urna contiene 5 bolas blancas y 3 rojas. Se extraen 2 bolas simultáneamente. Calcular la probabilidad de obtener:
+    \begin{enumerate}[label=\alph*)]
+    \item dos bolas rojas,\\
+    Comenzamos con obtener el número de casos totales, que de forma análoga al ejercicio anterior, se calcula de forma:
+    $$C^2_{a+b}=\frac{(a+b)!}{2!(a+b-2)!}=\frac{(a+b)(a+b-1)}{2}=\frac{(5+3)(5+3-1)}{2}=\frac{56}{2}=28$$
+    Entonces, los casos en los que salen dos bolas rojas son un total de:
+    $$C^2_3=\frac{3!}{2!(3-2)!}=\frac{6}{2}=3$$
+    Y las probabilidades de que salgan dos rojas serán:
+    $$P(RR)=\frac{3}{28}=0.107$$
+    
+    \item dos bolas blancas,\\
+    Análogamente al caso anterior, calculamos los casos en los que salen dos bolas blancas y dividimos los casos favorables entre casos posibles. los casos en los que salen dos bolas blancas son un total de:
+    $$C^2_5=\frac{5!}{2!(5-2)!}=\frac{120}{2*6}=10$$
+    Y las probabilidades de que salgan dos blancas serán:
+    $$P(RR)=\frac{10}{28}=0.357$$
+    
+    \item una blanca y otra roja.\\
+    Utilizando el resultado del ejercicio anterior, tenemos que:
+    $$P(BR)=\frac{ab}{1}\frac{2}{(a+b)(a+b-1)}=\frac{2ab}{(a+b)(a+b-1)}=$$
+    $$=\frac{2*5*3}{(5+3)(5+3-1)}=\frac{30}{56}=0.535$$
+    \end{enumerate}
+
+\item En una lotería de 100 billetes hay 2 que tienen premio.
+    \begin{enumerate}[label=\alph*)]
+    \item ¿Cuál es la probabilidad de ganar al menos un premio si se compran 12 billetes?\\
+    Tendremos que calcular, para aplicar la regla de Laplace, el número de casos totales, y el número de casos en los que sale, al menos un billete premiado. El total de casos serán combinaciones de 12 elementos sobre un total de 100, ya que el orden de estos no influye:
+    $$C^{12}_{100}= \frac{100!}{12!(100-12)!}$$
+    Calcular el número de casos posibles requeriría calculos complejos, así que, para simplificar, vamos a calcular el suceso complementario al que se nos pide, es decir, la probabilidad de que no salga ninguno premiado, que son combinaciones de 12 elementos sobre los 98 no premiados, sin repetición:
+    $$C^{12}_{98}= \frac{98!}{12!(98-12)!}$$
+    Entonces las probabilidades de que toque al menos un billete premiado será el complementario de que no toque ninguno, que se calcula como:
+    $$P(A)=1-\frac{12!(100-12)!}{100!} \frac{98!}{12!(98-12)!}=1-\frac{12!(100-12)!98!}{100!12!(98-12)!}=$$
+    $$=1-\frac{12!88!98!}{100!12!86!}=1-\frac{88!98!}{100!86!}=1-\frac{87*88}{99*100}=0.226$$
+    
+    \item ¿Cuántos billetes habrá que comprar para que la probabilidad de ganar al menos un premio sea mayor que \( \frac{4}{5} \)?
+    Despejando en el caso anterior, tenemos que el número de billetes lo podemos calcular como: 
+    $$\frac{4}{5}=1-\frac{(100-n)(100-1-n)}{99*100}\Rightarrow n=55$$
+    
+    \end{enumerate}
+    
+\item Se consideran los 100 primeros números naturales. Se sacan 3 al azar.
+    \begin{enumerate}[label=\alph*)]
+    \item Calcular la probabilidad de que en los 3 números obtenidos no exista ningún cuadrado perfecto.
+    \item Calcular la probabilidad de que exista al menos un cuadrado perfecto.
+    \item Calcular la probabilidad de que exista un sólo cuadrado perfecto, de que existan dos, y la de que los tres lo sean.
+    \end{enumerate}
+
+    \begin{enumerate}[label=\alph*)]
+    \item Calcular la probabilidad de que en los 3 números obtenidos no exista ningún cuadrado perfecto.
+
+    los cuadrados perfectos que hay entre el 1 y el 100 son: $\{ a^2 \leq 100 : a \in N\} =\{ 1,4, 9, 16,25, 36, 49,64, 81, 100\}$. Ahora calculamos los casos posibles y los casos favorables:
+
+    Como se toman 3 números distintos al azar, se trata de combinaciones (con o sin repetición ya que no se ha especificado) de 3 elementos. los casos posibles entonces son $CR_{100}^3=\frac{102!}{3!99!}$ en caso de que haya repetición, y $C_{100}^3=\frac{100!}{3!97!}$ en caso de que no la haya.
+
+    Los casos favorables son combinaciones de 3 elementos entre $100-10=90$. $CR_{100}^3=\frac{92!}{3!89!}$ en caso de que haya repetición, y $C_{100}^3=\frac{90!}{3!87!}$ en caso de que no la haya.
+
+    Ya calculados los casos posibles y favorables, podemos calcular la probabilidad de que no haya ningún cuadrado perfecto, que es:
+
+    Si hay repetición: $P($No se ha obtenido ningún cuadrado perfecto$)\frac{92!}{3!89!} \frac{3!99!}{102!} = \frac{92*91*90}{102*101*100} = 0,7313919$
+    Si no hay repetición: $P($No se ha obtenido ningún cuadrado perfecto$)=\frac{90!}{3!87!}\frac{3!97!}{100!}=\frac{90*89*88}{100*99*98}=0,7265306$\\
+    
+    \item Calcular la probabilidad de que exista al menos un cuadrado perfecto.
+
+    La probabilidad de que exista al menos un cuadrado perfecto es el complementario de la probabilidad de que no exista ningún cuadrado perfecto en los números obtenidos al azar, es decir:
+
+    Si hay repetición, $P($Al menos un cuadrado perfecto$)= 1 - 0,7313919 = 0,2686081$\\
+    Si no hay repetición, $P($Al menos un cuadrado perfecto$)= 1 -0,7265306 = 0,2734694$\\
+    \item Calcular la probabilidad de que exista un sólo cuadrado perfecto, de que existan dos, y la de que los tres lo sean.
+
+    Los casos posibles ya están calculados desde el apartado a), así que ahora tenemos que calcular los casos favorables para que haya uno, dos y tres cuadrados perfectos respectivamente entre los números obtenidos al azar, que vienen dadas de nuevo por combinaciones.
+
+    Los casos favorables para la obtención de exactamente un cuadrado perfecto es la intersección de los sucesos disjuntos de la combinación de dos elementos entre 90 (los números que no son cuadrados perfectos), y la combinación de uno entre 10 (el cuadrado perfecto), que sería: 
+
+    Con repetición: $CR_{90}^2CR_{10}^1=\frac{91!10!}{2!89!1!9!}=\frac{91*90*10}{2}$
+    Sin repetición: $C_{90}^2C_{10}^1=\frac{90!10!}{2!88!1!9!}=\frac{90*89*10}{2}$
+
+    Entonces, la probabilidad sería: Con repetición: $P($Un cuadrado perfecto$)=\frac{91*90*10}{2}\frac{3!99!}{102!}=\frac{91*90*10}{2}\frac{6}{102*101*100}=0,23849737$, y sin repetición:$P($Un cuadrado perfecto$)=\frac{90*89*10}{2}\frac{3!99!}{102!}=\frac{90*89*10}{2}\frac{6}{102*101*100}=0,23325567$\\
+
+    Para obtener dos cuadrados perfectos, utilizamos el mismo razonamiento, solo que ahora los casos posibles vienen dados por la combinación de 1 elemento entre 90 (el único número que no es cuadrado perfecto) multiplicado por la combinación de dos entre 10 (los dos cuadrados perfectos)
+
+    Con repetición: $CR_{90}^1CR_{10}^2=\frac{90!11!}{1!89!2!9!}=\frac{90*11*10}{2}$
+    Sin repetición: $C_{90}^1C_{10}^2=\frac{90!10!}{1!89!2!8!}=\frac{90*10*9}{2}$
+
+    Entonces, la probabilidad sería: Con repetición: $P($Un cuadrado perfecto$)=\frac{90*11*10}{2}\frac{6}{102*101*100}=0,028829353$, y sin repetición:$P($Un cuadrado perfecto$)=\frac{90*10*9}{2}\frac{6}{102*101*100}=0,023587652$\\
+
+    Finalmente, obtenemos los casos favorables para obtener 3 cuadrados perfectos, que sería la combinación de 3 entre 10:
+
+    Con repetición: $CR_{10}^3=\frac{12!}{3!9!}=\frac{12*11*10}{6}$
+    Sin repetición: $CR_{10}^3=\frac{10!}{3!7!}=\frac{10*9*8}{6}$
+
+    Entonces, la probabilidad sería: Con repetición: $P($Un cuadrado perfecto$)=\frac{12*11*10}{6}\frac{6}{102*101*100}=0,001281304$, y sin repetición:$P($Un cuadrado perfecto$)=\frac{10*9*8}{6}\frac{6}{102*101*100}=0,00069889341$
+
+    
+    \end{enumerate}
+
+    
+        
+    \item En una carrera de relevos cada equipo se compone de 4 atletas. La sociedad deportiva de un colegio cuenta con 10 corredores y su entrenador debe formar un equipo de relevos que disputará el campeonato, y el orden en que participarán los seleccionados.
+    \begin{enumerate}[label=\alph*)]
+    \item ¿Entre cuántos equipos distintos habrá de elegir el entrenador si los 10 corredores son de igual valía? (Dos equipos con los mismos atletas en orden distinto se consideran diferentes)
+    \item Calcular la probabilidad de que un alumno cualquiera sea seleccionado.
+    \end{enumerate}
+
+    \begin{enumerate}[label=\alph*)]
+    \item ¿Entre cuántos equipos distintos habrá de elegir el entrenador si los 10 corredores son de igual valía? (Dos equipos con los mismos atletas en orden distinto se consideran diferentes)\\
+
+    Como solo intervienen 4 elementos de 10, y el orden influye, nos pide calcular las variaciones sin repetición de 4 elementos entre 10, que serían equipos distintos: $$V^4_{10} =\frac{10!}{6!} =10*9*8*7=5040$$ 
+    
+    \item Calcular la probabilidad de que un alumno cualquiera sea seleccionado.
+
+    En el apartado a) hemos calculado la cantidad de equipos distintos entre los que el entrenador puede elegir, que representa los casos posibles en este experimento aleatorio. Nos falta calcular los casos favorables, la cantidad de equipos que contengan a un alumno cualquiera.
+    Fijado un alumno, calculamos el número de equipos que se pueden formar con los 9 compañeros restantes:
+    Para calcular el número de equipos, vemos las variaciones sin repetición de 3 elementos entre 9 y las multiplicamos por la cantidad de permutaciones sin repetición de 4 elementos (el número de equipos que se pueden formar con unos mismos 4 integrantes): $P_4V_9^3=4!\frac{9!}{6!}=24*84=2016$
+
+    Finalmente, con los casos favorables y los casos posibles, podemos aplicar la regla de Laplace para calcular $P(Alumno)=\frac{2016}{5040}=0,4$
+    
+    \end{enumerate}
+    
+\item Una tienda compra bombillas en lotes de 300 unidades. Cuando un lote llega, se comprueban 60 unidades elegidas al azar, rechazándose el envío si se supera la cifra de 5 defectuosas. ¿Cuál es la probabilidad de aceptar un lote en el que haya 10 defectuosas?
+
+Para que el lote sea aceptado, de las 60 bombillas extraídas debe haber como mucho 5 defectuosas, es decir, tenemos que encontrar la probabilidad de que 5 o menos bombillas defectuosas se encuentren entre las 60 elegidas, es decir, la suma de las probabilidades de que haya n bombillas defectuosas entre las elegidas, siendo n de 0 a 5:
+
+$P($Lote aceptado$)=P($0 a 5 bombillas defectuosas$)= \\
+= \sum\limits_{n=0}^5P($Hay n defectuosas$)$\\
+
+Para obtener la probabilidad de que haya n bombillas defectuosas, primero tenemos que ver los casos posibles, que es una combinación de 60 elementos sin repetición entre 300: $C_{300}^{60}=\frac{300!}{60!240!}$.
+Ahora, identificamos los casos favorables para que haya n bombillas defectuosas entre las 60. Como hay 10 bombillas defectuosas, los casos favorables a elegir n bombillas defectuosas se puede expresar como los casos en los que se eligen n bombillas entre las 10 defectuosas por los casos en los que se eligen 60 - n de las 300 - 10 bombillas no defectuosas, es decir, combinaciones de n elementos entre 10 por combinaciones de 60 - n elementos entre 290: $C_n^{10}C_{60-n}^{290}=\frac{10!}{n!10-n!}\frac{290!}{60-n!230-n!}$.
+
+Por tanto, $P($Lote aceptado$)=\sum\limits_{n=0}^5\frac{10!}{n!10-n!}\frac{290!}{60-n!230-n!}\frac{60!240!}{300!}=0,99448992$
+
+
+\item Una secretaria debe echar al correo 3 cartas; para ello, introduce cada carta en un sobre y escribe las direcciones al azar. ¿Cuál es la probabilidad de que al menos una carta llegue a su destino?
+
+Sea $B_i$ = "La carta i llega a su destino", entonces tenemos que:\\
+- El cardinal del espacio probabilístico $\Omega$ asociado a este experimento viene dado por las permutaciones sin repetición de las cartas, es decir $|\Omega| = 3! = 6$\\
+- Teniendo esto en cuenta, podemos calcular la probabilidad de que llegue al menos una carta (que es la unión de las probabilidades de que cada carta llegue a su destino):
+$$P(B_1 \cup B_2 \cup B_3) =$$
+$$P(B_1) + P(B_2) + P(B_3)-P(B_1\cap B_2) -P(B_1 \cap B_3)-P(B_2\cap B_3) + P(B_1\cap B_2\cap B_3) =$$
+$$3\frac{P_2}{6} - 3\frac{P_1}{6}+ \frac{P_0}{6} = 1 - \frac{3}{6} + \frac{1}{6}= \frac{4}{6}=\frac{3}{2}$$
+
+\end{enumerate}
+
+\end{document}
+
